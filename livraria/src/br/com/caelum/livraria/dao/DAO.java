@@ -71,8 +71,7 @@ public class DAO<T> {
 
 	public int contaTodos() {
 		EntityManager em = new JPAUtil().getEntityManager();
-		long result = (Long) em.createQuery("select count(n) from livro n")
-				.getSingleResult();
+		long result = (Long) em.createQuery("select count(n) from livro n").getSingleResult();
 		em.close();
 
 		return (int) result;
@@ -83,8 +82,7 @@ public class DAO<T> {
 		CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
 		query.select(query.from(classe));
 
-		List<T> lista = em.createQuery(query).setFirstResult(firstResult)
-				.setMaxResults(maxResults).getResultList();
+		List<T> lista = em.createQuery(query).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
 
 		em.close();
 		return lista;

@@ -62,14 +62,21 @@
 
 		<h:form id="formAutores">
 
-			<p:dataList value="#{autorBean.autores}" var="autor" type="definition">
+			<p:dataList value="#{autorBean.autores}" var="autor"
+				type="definition">
 				<f:facet name="header">
 			Autores
 			</f:facet>
 			
-			
-			<h:commandLink styleClass="pi pi-pencil" style="float:left;margin-right:10px" action="#{autorBean.carregar(autor)}" />
-			<h:commandLink styleClass="pi pi-trash" style="float:left;margin-right:10px"  action="#{autorBean.remover(autor)}" />
+
+
+				<p:commandButton icon="pi pi-pencil"
+					styleClass="rounded-button ui-button-outlined"
+					action="#{autorBean.carregar(autor)}" process="@this" update="@all" />
+					
+				<p:commandButton icon="pi pi-trash"
+					styleClass="rounded-button ui-button-danger ui-button-outlined"
+					action="#{autorBean.remover(autor)}" process="@this" update="@all"/>
 			
 			#{autor.nome} - #{autor.email}
 			
